@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_image',   // Added
+        'contact_number',
     ];
 
     /**
@@ -51,6 +53,10 @@ public function events()
     return $this->hasMany(Event::class);
 }
 
-
+// Relationship: Events the user has registered for
+    public function attending()
+    {
+        return $this->belongsToMany(Event::class);
+    }
 
 }
